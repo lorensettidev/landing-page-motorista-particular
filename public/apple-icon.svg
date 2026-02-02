@@ -1,0 +1,6 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180" rx="37" fill="#1a1a1a"/>
+  <text x="90" y="105" font-family="Georgia, Times, serif" font-size="56" font-weight="bold" fill="#d4af37" text-anchor="middle">HL</text>
+  <line x1="45" y1="125" x2="135" y2="125" stroke="#d4af37" stroke-width="3" stroke-linecap="round"/>
+  <line x1="55" y1="135" x2="125" y2="135" stroke="#d4af37" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+</svg>

@@ -25,21 +25,27 @@ export function ContactForm() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
 
-  const whatsappNumber = "5511999999999"
+  const whatsappNumber = "5541996435296"
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     
-    // Build WhatsApp message
-    const message = `Olá! Gostaria de solicitar um serviço.
+    // Format date from YYYY-MM-DD to DD/MM/YYYY
+    const formatDate = (dateStr: string) => {
+      const [year, month, day] = dateStr.split("-")
+      return `${day}/${month}/${year}`
+    }
 
-*Nome:* ${formData.nome}
-*WhatsApp:* ${formData.whatsapp}
-*Data:* ${formData.data}
-*Horário:* ${formData.horario}
-*Origem:* ${formData.origem}
-*Destino:* ${formData.destino}
-${formData.mensagem ? `*Observações:* ${formData.mensagem}` : ""}`
+    // Build WhatsApp message
+    const message = `Olá! 👋
+Meu nome é ${formData.nome}
+
+Gostaria de um motorista particular.
+📍 Origem: ${formData.origem}
+📍 Destino: ${formData.destino}
+📅 Data/Horário: ${formatDate(formData.data)} às ${formData.horario}
+
+Fico no aguardo, obrigado!${formData.mensagem ? `\n\n📝 Obs: ${formData.mensagem}` : ""}`
 
     const encodedMessage = encodeURIComponent(message)
     
@@ -51,8 +57,23 @@ ${formData.mensagem ? `*Observações:* ${formData.mensagem}` : ""}`
     }, 1500)
   }
 
+  const formatPhone = (value: string) => {
+    const numbers = value.replace(/\D/g, "")
+    if (numbers.length <= 2) {
+      return numbers.length ? `(${numbers}` : ""
+    }
+    if (numbers.length <= 7) {
+      return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`
+    }
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`
+  }
+
   const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }))
+    if (field === "whatsapp") {
+      setFormData(prev => ({ ...prev, [field]: formatPhone(value) }))
+    } else {
+      setFormData(prev => ({ ...prev, [field]: value }))
+    }
   }
 
   return (

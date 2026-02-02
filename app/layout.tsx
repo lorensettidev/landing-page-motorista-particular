@@ -8,26 +8,27 @@ const _playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-serif
 const _inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
 export const metadata: Metadata = {
-  title: 'Motorista Particular | Atendimento Direto e Confiável',
-  description: 'Motorista particular com atendimento direto, sem intermediações. Conforto, pontualidade e segurança em cada viagem. Serviço personalizado com veículo próprio.',
-  keywords: ['motorista particular', 'motorista particular são paulo', 'transporte particular', 'motorista de confiança'],
-  generator: 'v0.app',
+  title: 'Henrique Lorensetti | Motorista Particular em Curitiba',
+  description: 'Motorista particular em Curitiba e região metropolitana. Atendimento direto, sem intermediações. Conforto, pontualidade e segurança em cada viagem.',
+  keywords: ['motorista particular', 'motorista particular curitiba', 'transporte particular curitiba', 'motorista de confiança', 'henrique lorensetti'],
   icons: {
     icon: [
       {
-        url: '/icon-light-32x32.png',
+        url: '/icon-light.svg',
         media: '(prefers-color-scheme: light)',
+        type: 'image/svg+xml',
       },
       {
-        url: '/icon-dark-32x32.png',
+        url: '/icon-dark.svg',
         media: '(prefers-color-scheme: dark)',
+        type: 'image/svg+xml',
       },
       {
         url: '/icon.svg',
         type: 'image/svg+xml',
       },
     ],
-    apple: '/apple-icon.png',
+    apple: '/apple-icon.svg',
   },
 }
 

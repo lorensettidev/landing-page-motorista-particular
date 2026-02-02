@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
-  const whatsappNumber = "5511999999999"
+  const whatsappNumber = "5541996435296"
 
   return (
     <footer className="bg-primary text-primary-foreground">
@@ -14,7 +14,7 @@ export function Footer() {
           {/* Driver Info */}
           <div className="text-center md:text-left">
             <h3 className="font-serif text-xl font-bold mb-2">
-              João Silva
+              Henrique Lorensetti
             </h3>
             <p className="text-primary-foreground/80 text-sm">
               Motorista Particular
@@ -24,7 +24,7 @@ export function Footer() {
           {/* Location */}
           <div className="flex items-center gap-2 text-primary-foreground/80">
             <MapPin className="w-4 h-4" />
-            <span className="text-sm">São Paulo e Região</span>
+            <span className="text-sm">Curitiba e Região Metropolitana</span>
           </div>
 
           {/* WhatsApp */}
@@ -35,7 +35,7 @@ export function Footer() {
             className="flex items-center gap-2 text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium"
           >
             <Phone className="w-4 h-4" />
-            (11) 99999-9999
+            (41) 99643-5296
           </a>
         </div>
       </div>
@@ -44,7 +44,7 @@ export function Footer() {
       <div className="border-t border-primary-foreground/10">
         <div className="container mx-auto px-4 py-4">
           <p className="text-center text-primary-foreground/60 text-sm">
-            © {currentYear} Motorista Particular. Todos os direitos reservados.
+            © {currentYear} Lorensetti Dev. Todos os direitos reservados.
           </p>
         </div>
       </div>
@@ -53,7 +53,7 @@ export function Footer() {
 }
 
 export function WhatsAppFloat() {
-  const whatsappNumber = "5511999999999"
+  const whatsappNumber = "5541996435296"
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de solicitar informações.")
 
   return (
