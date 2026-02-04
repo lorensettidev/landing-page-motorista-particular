@@ -2,6 +2,7 @@
 
 import React from "react"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -12,6 +13,7 @@ import { useInView } from "framer-motion"
 import { useRef } from "react"
 
 export function ContactForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     nome: "",
     whatsapp: "",
@@ -50,10 +52,10 @@ Fico no aguardo, obrigado!${formData.mensagem ? `\n\n📝 Obs: ${formData.mensag
     const encodedMessage = encodeURIComponent(message)
     
     setIsSubmitted(true)
-    
-    // Redirect to WhatsApp after showing success message
+
+    // Redirect to thank you page (WhatsApp will open automatically there)
     setTimeout(() => {
-      window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, "_blank")
+      router.push(`/obrigado?auto=1&msg=${encodedMessage}`)
     }, 1500)
   }
 
@@ -244,15 +246,17 @@ Fico no aguardo, obrigado!${formData.mensagem ? `\n\n📝 Obs: ${formData.mensag
                   {/* WhatsApp Direct Link */}
                   <p className="text-center text-muted-foreground text-sm">
                     Ou fale diretamente pelo{" "}
-                    <a 
-                      href={`https://wa.me/${whatsappNumber}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const msg = encodeURIComponent("Olá! Gostaria de solicitar informações sobre o serviço de motorista particular.")
+                        router.push(`/obrigado?auto=1&msg=${msg}`)
+                      }}
                       className="text-foreground font-medium hover:underline inline-flex items-center gap-1"
                     >
                       <MessageCircle className="w-4 h-4" />
                       WhatsApp
-                    </a>
+                    </button>
                   </p>
                 </motion.form>
               )}

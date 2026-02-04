@@ -3,10 +3,17 @@
 import { Button } from "@/components/ui/button"
 import { MessageCircle, ChevronDown } from "lucide-react"
 import { motion } from "framer-motion"
+import { useRouter } from "next/navigation"
 
 export function Hero() {
+  const router = useRouter()
   const whatsappNumber = "5541996435296"
   const whatsappMessage = encodeURIComponent("Olá! Gostaria de solicitar informações sobre o serviço de motorista particular.")
+
+  const handleWhatsAppClick = () => {
+    const msg = encodeURIComponent("Olá! Gostaria de solicitar informações sobre o serviço de motorista particular.")
+    router.push(`/obrigado?auto=1&msg=${msg}`)
+  }
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -41,20 +48,13 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
           >
-            <Button 
-              asChild
-              size="lg" 
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+            <Button
+              onClick={handleWhatsAppClick}
+              size="lg"
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-6 text-lg rounded-full shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 inline-flex items-center gap-3"
             >
-              <a 
-                href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Falar direto no WhatsApp
-              </a>
+              <MessageCircle className="w-5 h-5" />
+              Falar direto no WhatsApp
             </Button>
           </motion.div>
         </motion.div>
